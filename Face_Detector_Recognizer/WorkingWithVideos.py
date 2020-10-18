@@ -1,3 +1,6 @@
+# Face detector in a video by using your webcame.
+# If you want to save images to some directory, uncomment "ImageSaver" 
+
 import cv2, time
 import os
 
@@ -13,7 +16,7 @@ def ImageSaver ( image_path, img, no ):
 
 video = cv2.VideoCapture(0)
 
-face_cascade = cv2.CascadeClassifier("/Users/jawadabbasi/Documents/FinalProject/venv/lib/python2.7/site-packages/cv2/data/haarcascade_frontalface_default.xml")
+face_cascade = cv2.CascadeClassifier("../haarcascade_frontalface_default.xml")
 
 a = 1
 
@@ -33,7 +36,7 @@ while True:
 
     cv2.imshow("Capturing", frame)
 
-#    ImageSaver("/Users/jawadabbasi/Documents", frame, a)
+#    ImageSaver("/Users/abc/Documents", frame, a)
 
     key = cv2.waitKey(1)
 
