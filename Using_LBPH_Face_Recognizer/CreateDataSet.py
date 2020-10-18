@@ -3,37 +3,41 @@ import dlib
 import sqlite3
 import requests
 
-face_recognizer = cv2.CascadeClassifier("/Users/jawadabbasi/Documents/FinalProject/venv/lib/python2.7/site-packages/cv2/data/haarcascade_frontalface_default.xml")
+face_recognizer = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
-def InsertOrUpdateToSqlite(u_Id, UserName1, Gender1):
+#If you are using SQLite :
 
-    conn = sqlite3.connect("/Users/jawadabbasi/Documents/FinalProject/ProjectDataBase.db")
+# def InsertOrUpdateToSqlite(u_Id, UserName1, Gender1):
 
-    sqlQuery = "select * from 'UserData' where Id = " + str(u_Id)
+#     conn = sqlite3.connect("ProjectDataBase.db")
 
-    result = conn.execute(sqlQuery)
+#     sqlQuery = "select * from 'UserData' where Id = " + str(u_Id)
 
-    isRecordExist = 0
+#     result = conn.execute(sqlQuery)
 
-    for row in result:
-        isRecordExist = 1
+#     isRecordExist = 0
 
-    if isRecordExist == 1:
-        sqlQuery = "update UserData set UName = " + str(UserName1) + "and Gender = " + str(Gender1) + "where Id = "+ u_Id
+#     for row in result:
+#         isRecordExist = 1
 
-    else:
-       sqlQuery = ""
+#     if isRecordExist == 1:
+#         sqlQuery = "update UserData set UName = " + str(UserName1) + "and Gender = " + str(Gender1) + "where Id = "+ u_Id
 
-    conn.execute("INSERT INTO UserData VALUES (?, ?, ?)", (u_Id, UserName1, Gender1))
+#     else:
+#        sqlQuery = ""
 
-    conn.commit()
+#     conn.execute("INSERT INTO UserData VALUES (?, ?, ?)", (u_Id, UserName1, Gender1))
 
-    conn.close()
+#     conn.commit()
+
+#     conn.close()
+
+# For SQL Server
 
 def insertToSQLUsingAPI(a_Arid_No, a_Stu_Name, a_Stu_Gender):
     print ("Api")
     dataToPost = {"Arid_No": a_Arid_No, "Student_Name": a_Stu_Name, "Student_Gender": a_Stu_Gender}
-    response = requests.post("http://10.211.55.3/WebApi/api/Detection/AddStudent", data=dataToPost)
+    response = requests.post("http://IP_Adress/API_Project_Name/api/Detection/AddStudent", data=dataToPost)
     print (response.status_code, response.content)
 
 Id = input("Enter Id: ")
@@ -75,7 +79,7 @@ while True:
 
         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 3)
 
-        cv2.imwrite("/Users/jawadabbasi/Documents/FinalProject/venv/VideoModel_For_Project/DataForProject/UserImage." + str(Id) + "." + str(a) + ".jpg", gray_Scale)
+        cv2.imwrite("DataSet/UserImage." + str(Id) + "." + str(a) + ".jpg", gray_Scale)
 
     cv2.imshow("Frames", frame)
 
