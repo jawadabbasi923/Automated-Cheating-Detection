@@ -1,3 +1,6 @@
+# Here we are using "dlib" for face detection, a way more accurate than Opencv/haarcascade.
+# You have to install dlib and imutils(built-in python libraries) first by using command in terminal : pip install dlib and pip install imutils.
+
 from imutils import face_utils
 import dlib
 import cv2
