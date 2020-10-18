@@ -5,7 +5,7 @@ from PIL import Image
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
-path_for_dataset = "/Users/jawadabbasi/Documents/FinalProject/venv/VideoModel_For_Project/DataForProject"
+path_for_dataset = "DataSet"
 
 def getImagesForTraining(path):
 
@@ -33,6 +33,6 @@ user_ids, faces = getImagesForTraining(path_for_dataset)
 
 recognizer.train(faces , user_ids)
 
-recognizer.save("/Users/jawadabbasi/Documents/FinalProject/venv/VideoModel_For_Project/trained.yml")
+recognizer.save("Model/trained.yml")
 
 cv2.destroyAllWindows()
