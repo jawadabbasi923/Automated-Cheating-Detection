@@ -1,6 +1,8 @@
+#The simplest way for detecting face in a image.
+
 import cv2
 
-img = cv2.imread("/Users/jawadabbasi/Documents/FinalProject/venv/Data/JawadPic.jpeg",1)
+img = cv2.imread("Data/JawadPic.jpeg",1)
 
 #print ( type(img))
 
@@ -14,11 +16,7 @@ img = cv2.imread("/Users/jawadabbasi/Documents/FinalProject/venv/Data/JawadPic.j
 #
 # cv2.destroyAllWindows()
 
-# QT platform
-# pip3 install --upgrade opencv-python==4.1.2.30
-# https://www.youtube.com/watch?v=-ZrDjwXZGxI
-
-face_cascade = cv2.CascadeClassifier("/Users/jawadabbasi/Documents/FinalProject/venv/lib/python2.7/site-packages/cv2/data/haarcascade_frontalface_default.xml")
+face_cascade = cv2.CascadeClassifier("../haarcascade_frontalface_default.xml")
 
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
