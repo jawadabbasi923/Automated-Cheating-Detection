@@ -6,17 +6,17 @@ import requests
 import json
 
 #face_recognizer = dlib.get_frontal_face_detector()
-face_recognizer = cv2.CascadeClassifier("/Users/jawadabbasi/Documents/FinalProject/venv/lib/python2.7/site-packages/cv2/data/haarcascade_frontalface_default.xml")
+face_recognizer = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
 cam = cv2.VideoCapture(0)
 
-recognizer.read("/Users/jawadabbasi/Documents/FinalProject/venv/VideoModel_For_Project/trained.yml")
+recognizer.read("Model/trained.yml")
 
 def getUser(Id):
 
-    conn = sqlite3.connect("/Users/jawadabbasi/Documents/FinalProject/ProjectDataBase.db")
+    conn = sqlite3.connect("ProjectDataBase.db")
 
     sqlQuery = "select * from UserData where Id = " + str(Id)
 
@@ -34,7 +34,7 @@ def getUser(Id):
     return user
 
 def getStudentFromSQL(Arid_No1):
-    response = requests.get("http://10.211.55.3/WebApi/api/Detection/getStudentFromSQL?Arid_No="+Arid_No1)
+    response = requests.get("http://IP_Adress/WebApi/api/Detection/getStudentFromSQL?Arid_No="+Arid_No1)
 
     student = []
     if response.ok:
