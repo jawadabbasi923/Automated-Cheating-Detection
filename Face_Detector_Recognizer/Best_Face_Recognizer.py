@@ -29,10 +29,10 @@ def draw_border(img, pt1, pt2, color, thickness, r, d):
     cv2.line(img, (x2, y2 - r), (x2, y2 - r - d), color, thickness)
     cv2.ellipse(img, (x2 - r, y2 - r), (r, r), 0, 0, 90, color, thickness)
 
-jawad_image = face_recognition.load_image_file("SimplePics/Jawad.jpeg")
+jawad_image = face_recognition.load_image_file("SimplePics/JawadPic.jpeg")
 jawad_face_encoding = face_recognition.face_encodings(jawad_image)[0]
 
-taimoor_image = face_recognition.load_image_file("SimplePics/Taimoor.jpeg")
+taimoor_image = face_recognition.load_image_file("SimplePics/Taimoor12.jpeg")
 taimoor_face_encoding = face_recognition.face_encodings(taimoor_image)[0]
 
 muddaser_image = face_recognition.load_image_file("SimplePics/Muddaser.jpg")
